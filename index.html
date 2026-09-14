@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الامتحان الشامل النهائي - Sunshine T Academy</title>
+<style>
+:root {
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+  --accent: #ec4899;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --gray: #64748b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: var(--dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.header .logo {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.header .subtitle {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+.header .meta {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.header .meta span {
+  background: rgba(255,255,255,0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Login Page */
+.login-page {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.login-box {
+  max-width: 600px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  padding: 40px;
+  border-radius: 20px;
+  border: 3px solid var(--warning);
+}
+
+.login-box h2 {
+  color: #92400e;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--dark);
+  font-size: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--warning);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.btn {
+  background: linear-gradient(135deg, var(--success), #059669);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--danger), #dc2626);
+}
+
+/* Exam Page */
+.exam-page {
+  display: none;
+  padding: 30px;
+}
+
+.exam-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.exam-info {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  background: rgba(255,255,255,0.2);
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.timer {
+  background: var(--danger);
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.section-header {
+  background: linear-gradient(135deg, var(--info), var(--primary));
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  margin: 30px 0 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.question-box {
+  background: var(--light);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border-right: 5px solid var(--primary);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  background: var(--primary);
+  color: white;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.question-type {
+  background: var(--warning);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.question-text {
+  font-size: 1.15rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.code-block {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+  direction: ltr;
+  text-align: left;
+  font-family: 'Consolas', monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  border-right: 4px solid var(--accent);
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+}
+
+.option {
+  background: white;
+  border: 2px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.option:hover {
+  border-color: var(--primary);
+  background: #e0e7ff;
+}
+
+.option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.option label {
+  cursor: pointer;
+  flex: 1;
+  font-size: 1.05rem;
+}
+
+.submit-section {
+  text-align: center;
+  margin-top: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-radius: 15px;
+  border: 3px dashed var(--warning);
+}
+
+/* Results Page */
+.results-page {
+  display: none;
+  padding: 40px;
+}
+
+.results-box {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.results-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 30px;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+}
+
+.results-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.results-header .logo {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  letter-spacing: 2px;
+}
+
+.results-body {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  padding: 40px;
+  border-radius: 0 0 20px 20px;
+  border: 3px solid var(--success);
+}
+
+.student-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 2px solid var(--primary);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  text-align: right;
+}
+
+.student-card-item {
+  background: var(--light);
+  padding: 12px 15px;
+  border-radius: 10px;
+  border-right: 4px solid var(--primary);
+  font-size: 1rem;
+}
+
+.student-card-item span {
+  color: var(--gray);
+  font-weight: bold;
+}
+
+.student-card-item b {
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+.score-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.score-number {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.score-label {
+  font-size: 1.2rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.stat-box {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.correct { color: var(--success); }
+.wrong { color: var(--danger); }
+
+.section-performance {
+  margin: 30px 0;
+  text-align: right;
+}
+
+.section-performance h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.performance-bar {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.performance-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.performance-track {
+  background: #e2e8f0;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.performance-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--success), var(--info));
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.review-section {
+  margin-top: 40px;
+  text-align: right;
+}
+
+.review-section h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.review-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border-right: 5px solid;
+}
+
+.review-item.correct-answer {
+  border-color: var(--success);
+  background: #d1fae5;
+}
+
+.review-item.wrong-answer {
+  border-color: var(--danger);
+  background: #fee2e2;
+}
+
+.review-item.unanswered {
+  border-color: var(--gray);
+  background: #f1f5f9;
+}
+
+.action-buttons {
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Print Styles */
+@media print {
+  body { background: white; padding: 0; }
+  .container { box-shadow: none; max-width: 100%; }
+  .btn, .action-buttons, .submit-section { display: none !important; }
+  .question-box { break-inside: avoid; }
+  .student-card { border: 2px solid #000; }
+  .results-page { padding: 10px; }
+  .results-box { max-width: 100%; }
+  .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .results-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.6rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .exam-header { flex-direction: column; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .student-card { grid-template-columns: 1fr; }
+  .score-circle { width: 150px; height: 150px; }
+  .score-number { font-size: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="logo">☀️ Sunshine T Academy ☀️</div>
+    <h1>📝 الامتحان الشامل النهائي - المستوى الأول</h1>
+    <p class="subtitle">Python Programming - Final Comprehensive Exam</p>
+    <div class="meta">
+      <span>⏱️ 60 دقيقة</span>
+      <span>❓ 120 سؤال</span>
+      <span>📊 120 درجة</span>
+      <span>✅ النجاح: 60/120</span>
+    </div>
+  </div>
+
+  <!-- Login Page -->
+  <div class="login-page" id="loginPage">
+    <div class="login-box">
+      <h2>🎓 بيانات الطالب</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="studentName">الاسم الكامل:</label>
+          <input type="text" id="studentName" placeholder="أدخل اسمك الثلاثي" required>
+        </div>
+        <div class="form-group">
+          <label for="studentAge">العمر:</label>
+          <input type="number" id="studentAge" placeholder="أدخل عمرك" min="5" max="99" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="examDate">التاريخ:</label>
+          <input type="date" id="examDate" required>
+        </div>
+        <div class="form-group">
+          <label for="studentGrade">الكلية / القسم:</label>
+          <input type="text" id="studentGrade" placeholder="مثال: علوم حاسب" required>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="startExam()">🚀 ابدأ الامتحان</button>
+    </div>
+  </div>
+
+  <!-- Exam Page -->
+  <div class="exam-page" id="examPage">
+    <div class="exam-header">
+      <div class="exam-info">
+        <div class="info-item">👤 <span id="displayName"></span></div>
+        <div class="info-item">🎂 <span id="displayAge"></span></div>
+        <div class="info-item">📅 <span id="displayDate"></span></div>
+        <div class="info-item">✅ تقدم: <span id="currentQ">0</span>/120</div>
+      </div>
+      <div class="timer" id="timer">60:00</div>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div class="submit-section">
+      <h3 style="color: #92400e; margin-bottom: 15px;">📤 هل أنت جاهز للتسليم؟</h3>
+      <p style="margin-bottom: 20px; color: #78350f;">تأكد من إجابة جميع الأسئلة قبل التسليم</p>
+      <button class="btn btn-danger" onclick="submitExam()">✅ تسليم الورقة</button>
+    </div>
+  </div>
+
+  <!-- Results Page -->
+  <div class="results-page" id="resultsPage">
+    <div class="results-box">
+      <div class="results-header">
+        <div class="logo">☀️ Sunshine T Academy ☀️</div>
+        <h2>🎉 نتيجة الامتحان الشامل النهائي</h2>
+        <p>Python Programming - Level 1 Final Exam</p>
+      </div>
+
+      <div class="results-body">
+        <!-- بطاقة بيانات الطالب -->
+        <div class="student-card">
+          <div class="student-card-item"><span>👤 الاسم: </span><b id="resName">--</b></div>
+          <div class="student-card-item"><span>🎂 العمر: </span><b id="resAge">--</b></div>
+          <div class="student-card-item"><span>🎓 الكلية/القسم: </span><b id="resGrade">--</b></div>
+          <div class="student-card-item"><span>📅 التاريخ: </span><b id="resDate">--</b></div>
+        </div>
+        
+        <div class="score-circle">
+          <div class="score-number" id="finalScore">0</div>
+          <div class="score-label">من 120</div>
+        </div>
+
+        <div class="stats">
+          <div class="stat-box">
+            <div class="stat-value correct" id="correctCount">0</div>
+            <div class="stat-label">إجابات صحيحة ✅</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value wrong" id="wrongCount">0</div>
+            <div class="stat-label">إجابات خاطئة ❌</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="percentage">0%</div>
+            <div class="stat-label">النسبة المئوية</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="timeSpent">00:00</div>
+            <div class="stat-label">الوقت المستغرق</div>
+          </div>
+        </div>
+
+        <div class="section-performance" id="sectionPerformance"></div>
+
+        <div class="review-section" id="reviewSection"></div>
+
+        <div class="action-buttons">
+          <button class="btn" onclick="window.print()">🖨️ طباعة النتيجة PDF</button>
+          <button class="btn btn-primary" onclick="location.reload()">🔄 إعادة الامتحان</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Questions Database - 120 Questions (6 per lecture × 20 lectures)
+const questions = [
+  // ============ Lecture 1: Print (6) ============
+  { section: "1. Print", type: "عملي", q: "ما ناتج: print('Hello')؟", options: ["Hello", "'Hello'", "Error", "Nothing"], correct: 0 },
+  { section: "1. Print", type: "عملي", q: "ما ناتج: print('A' + 'B')؟", options: ["A B", "AB", "Error", "A+B"], correct: 1 },
+  { section: "1. Print", type: "نظري", q: "ما وظيفة print()؟", options: ["إدخال بيانات", "عرض بيانات على الشاشة", "حفظ في ملف", "حذف بيانات"], correct: 1 },
+  { section: "1. Print", type: "عملي", q: "ما ناتج: print(5, 3)؟", options: ["53", "5 3", "Error", "5,3"], correct: 1 },
+  { section: "1. Print", type: "عملي", q: "كيف تطبع نصًا مع سطر جديد؟", options: ["print('A\\nB')", "print('A B')", "print('A+B')", "print('A', 'B')"], correct: 0 },
+  { section: "1. Print", type: "نظري", q: "ما وظيفة sep في print؟", options: ["يفصل بين العناصر", "ينهي السطر", "يكرر الطباعة", "يخفي الناتج"], correct: 0 },
+
+  // ============ Lecture 2: Variables (6) ============
+  { section: "2. Variables", type: "نظري", q: "كيف تنشئ متغير في Python؟", options: ["var x = 5", "x = 5", "int x = 5", "declare x = 5"], correct: 1 },
+  { section: "2. Variables", type: "نظري", q: "أي اسم متغير صحيح؟", options: ["2name", "my-name", "my_name", "class"], correct: 2 },
+  { section: "2. Variables", type: "عملي", q: "ما ناتج: x = 5; x = 10; print(x)", options: ["5", "10", "15", "Error"], correct: 1 },
+  { section: "2. Variables", type: "نظري", q: "هل Python حالة لحروف المتغيرات؟", options: ["نعم (case-sensitive)", "لا", "أحيانًا", "فقط للأرقام"], correct: 0 },
+  { section: "2. Variables", type: "عملي", q: "ما ناتج: x = 'A'; y = 'B'; print(x+y)", options: ["A B", "AB", "Error", "x+y"], correct: 1 },
+  { section: "2. Variables", type: "نظري", q: "أي من التالي ليس اسم متغير صحيح؟", options: ["_name", "name1", "1name", "myName"], correct: 2 },
+
+  // ============ Lecture 3: Input (6) ============
+  { section: "3. Input", type: "نظري", q: "ما نوع البيانات الذي يرجعه input()؟", options: ["int", "float", "str", "bool"], correct: 2 },
+  { section: "3. Input", type: "عملي", q: "كيف تقرأ رقمًا من المستخدم؟", options: ["input()", "int(input())", "num(input())", "read()"], correct: 1 },
+  { section: "3. Input", type: "عملي", q: "ما ناتج: name = input(); print('Hi', name) إذا أدخل Ali؟", options: ["Hi Ali", "Hi name", "Error", "Hi"], correct: 0 },
+  { section: "3. Input", type: "نظري", q: "ما وظيفة input()؟", options: ["عرض بيانات", "قراءة بيانات من المستخدم", "حفظ في ملف", "حذف بيانات"], correct: 1 },
+  { section: "3. Input", type: "عملي", q: "كيف تقرأ رقمًا عشريًا؟", options: ["int(input())", "float(input())", "num(input())", "decimal(input())"], correct: 1 },
+  { section: "3. Input", type: "عملي", q: "ما الخطأ إذا كتب المستخدم 'abc' في int(input())؟", options: ["TypeError", "ValueError", "SyntaxError", "No error"], correct: 1 },
+
+  // ============ Lecture 4: Types (6) ============
+  { section: "4. Types", type: "نظري", q: "ما نوع 3.14؟", options: ["int", "float", "str", "bool"], correct: 1 },
+  { section: "4. Types", type: "نظري", q: "ما نوع 'Hello'؟", options: ["int", "float", "str", "char"], correct: 2 },
+  { section: "4. Types", type: "عملي", q: "ما ناتج: type(5)؟", options: ["<class 'int'>", "<class 'float'>", "<class 'str'>", "5"], correct: 0 },
+  { section: "4. Types", type: "عملي", q: "ما ناتج: int('10')؟", options: ["'10'", "10", "Error", "10.0"], correct: 1 },
+  { section: "4. Types", type: "عملي", q: "ما ناتج: str(5) + 'A'؟", options: ["5A", "Error", "5 A", "55A"], correct: 0 },
+  { section: "4. Types", type: "نظري", q: "ما نوع True؟", options: ["int", "str", "bool", "float"], correct: 2 },
+
+  // ============ Lecture 5: Math (6) ============
+  { section: "5. Math", type: "عملي", q: "ما ناتج: 10 % 3؟", options: ["3", "1", "0", "10"], correct: 1 },
+  { section: "5. Math", type: "عملي", q: "ما ناتج: 2 ** 3؟", options: ["6", "8", "5", "9"], correct: 1 },
+  { section: "5. Math", type: "عملي", q: "ما ناتج: 15 // 2؟", options: ["7.5", "7", "8", "7.0"], correct: 1 },
+  { section: "5. Math", type: "عملي", q: "ما ناتج: 3 + 4 * 2؟", options: ["14", "11", "10", "24"], correct: 1 },
+  { section: "5. Math", type: "عملي", q: "ما ناتج: (3 + 4) * 2؟", options: ["14", "11", "10", "24"], correct: 0 },
+  { section: "5. Math", type: "عملي", q: "ما ناتج: abs(-5)؟", options: ["-5", "5", "0", "Error"], correct: 1 },
+
+  // ============ Lecture 6: If/Else (6) ============
+  { section: "6. If/Else", type: "نظري", q: "ما الرمز للمقارنة؟", options: ["=", "==", "===", "equals"], correct: 1 },
+  { section: "6. If/Else", type: "عملي", q: "ما ناتج: if 5 > 3: print('Y')", options: ["Y", "Nothing", "Error", "N"], correct: 0 },
+  { section: "6. If/Else", type: "نظري", q: "ما الكلمة لـ 'وإلا'؟", options: ["otherwise", "else", "elif", "or"], correct: 1 },
+  { section: "6. If/Else", type: "عملي", q: "ما ناتج: 10 % 2 == 0؟", options: ["True", "False", "0", "1"], correct: 0 },
+  { section: "6. If/Else", type: "عملي", q: "ما ناتج: 5 != 5؟", options: ["True", "False", "5", "0"], correct: 1 },
+  { section: "6. If/Else", type: "نظري", q: "ماذا يحدث لو كان الشرط False؟", options: ["ينفذ if", "ينفذ else", "خطأ", "لا شيء"], correct: 1 },
+
+  // ============ Lecture 7: If/Elif/Else (6) ============
+  { section: "7. If/Elif/Else", type: "عملي", q: "ما ناتج: x=7; if x>10: print('A'); elif x>5: print('B'); else: print('C')", options: ["A", "B", "C", "A B"], correct: 1 },
+  { section: "7. If/Elif/Else", type: "نظري", q: "ما وظيفة elif؟", options: ["نهاية الشرط", "شرط إضافي", "شرط بديل", "شرط رئيسي"], correct: 1 },
+  { section: "7. If/Elif/Else", type: "عملي", q: "ما ناتج: True and False؟", options: ["True", "False", "None", "Error"], correct: 1 },
+  { section: "7. If/Elif/Else", type: "عملي", q: "ما ناتج: True or False؟", options: ["True", "False", "None", "Error"], correct: 0 },
+  { section: "7. If/Elif/Else", type: "عملي", q: "ما ناتج: not True؟", options: ["True", "False", "None", "Error"], correct: 1 },
+  { section: "7. If/Elif/Else", type: "نظري", q: "أي عامل يعني 'و'؟", options: ["or", "and", "not", "&&"], correct: 1 },
+
+  // ============ Lecture 8: For Loop (6) ============
+  { section: "8. For Loop", type: "نظري", q: "كم مرة ينفذ: for i in range(5)؟", options: ["4", "5", "6", "∞"], correct: 1 },
+  { section: "8. For Loop", type: "نظري", q: "ما أول رقم في range(5)؟", options: ["1", "0", "5", "-1"], correct: 1 },
+  { section: "8. For Loop", type: "عملي", q: "ما ناتج: list(range(1, 4))؟", options: ["[1,2,3,4]", "[1,2,3]", "[0,1,2,3]", "[2,3,4]"], correct: 1 },
+  { section: "8. For Loop", type: "عملي", q: "ما ناتج: for i in range(0,10,2): print(i)", options: ["0,1,2..9", "0,2,4,6,8", "2,4,6,8,10", "1,3,5,7,9"], correct: 1 },
+  { section: "8. For Loop", type: "نظري", q: "ما وظيفة break؟", options: ["يتخطى التكرار", "يوقف الحلقة", "يكرر", "يبدأ"], correct: 1 },
+  { section: "8. For Loop", type: "نظري", q: "ما وظيفة continue؟", options: ["يتخطى التكرار ويكمل", "يوقف الحلقة", "يكرر", "يبدأ"], correct: 0 },
+
+  // ============ Lecture 9: While Loop (6) ============
+  { section: "9. While Loop", type: "نظري", q: "متى تتوقف while؟", options: ["بعد عدد محدد", "عندما يصبح الشرط False", "عندما يصبح True", "أبدًا"], correct: 1 },
+  { section: "9. While Loop", type: "عملي", q: "ما ناتج: x=1; while x<4: print(x); x+=1", options: ["1 2 3", "1 2 3 4", "2 3 4", "1 2"], correct: 0 },
+  { section: "9. While Loop", type: "نظري", q: "ماذا يعني while True؟", options: ["حلقة لا نهائية", "مرة واحدة", "شرطية", "خطأ"], correct: 0 },
+  { section: "9. While Loop", type: "عملي", q: "ما ناتج: count=3; while count>0: print(count); count-=1", options: ["3 2 1", "2 1 0", "3 2 1 0", "1 2 3"], correct: 0 },
+  { section: "9. While Loop", type: "نظري", q: "الفرق بين for و while؟", options: ["for لعدد، while لشرط", "while لعدد، for لشرط", "لا فرق", "for أسرع"], correct: 0 },
+  { section: "9. While Loop", type: "نظري", q: "هل يمكن استخدام else مع while؟", options: ["نعم", "لا", "أحيانًا", "فقط مع for"], correct: 0 },
+
+  // ============ Lecture 10: Lists 1 (6) ============
+  { section: "10. Lists 1", type: "نظري", q: "كيف تنشئ قائمة فارغة؟", options: ["{}", "[]", "()", "list{}"], correct: 1 },
+  { section: "10. Lists 1", type: "نظري", q: "ما Index أول عنصر؟", options: ["1", "0", "-1", "first"], correct: 1 },
+  { section: "10. Lists 1", type: "نظري", q: "كيف تصل لآخر عنصر؟", options: ["list[0]", "list[-1]", "list[last]", "list[end]"], correct: 1 },
+  { section: "10. Lists 1", type: "نظري", q: "ماذا تفعل append()؟", options: ["تحذف", "تضيف في النهاية", "تضيف في البداية", "ترتب"], correct: 1 },
+  { section: "10. Lists 1", type: "عملي", q: "ما ناتج: len([1,2,3,4])؟", options: ["3", "4", "5", "0"], correct: 1 },
+  { section: "10. Lists 1", type: "نظري", q: "ماذا تفعل pop()؟", options: ["تحذف آخر عنصر", "تحذف أول عنصر", "تضيف", "ترتب"], correct: 0 },
+
+  // ============ Lecture 11: Lists 2 (6) ============
+  { section: "11. Lists 2", type: "عملي", q: "ما ناتج: [1,2,3,4,5][1:4]؟", options: ["[1,2,3]", "[2,3,4]", "[2,3,4,5]", "[1,2,3,4]"], correct: 1 },
+  { section: "11. Lists 2", type: "عملي", q: "ما ناتج: [1,2] + [3,4]؟", options: ["[1,2,3,4]", "[4,6]", "Error", "[1,2][3,4]"], correct: 0 },
+  { section: "11. Lists 2", type: "عملي", q: "ما ناتج: [1,2] * 3؟", options: ["[1,2,3]", "[1,2,1,2,1,2]", "[3,6]", "Error"], correct: 1 },
+  { section: "11. Lists 2", type: "نظري", q: "كيف تعكس القائمة؟", options: ["list.reverse()", "reverse(list)", "list.back()", "list.flip()"], correct: 0 },
+  { section: "11. Lists 2", type: "عملي", q: "ما ناتج: min([3,1,4,1,5])؟", options: ["1", "3", "5", "4"], correct: 0 },
+  { section: "11. Lists 2", type: "عملي", q: "ما ناتج: ','.join(['a','b','c'])؟", options: ["['a','b','c']", "'a,b,c'", "'abc'", "Error"], correct: 1 },
+
+  // ============ Lecture 12: Dictionary (6) ============
+  { section: "12. Dictionary", type: "نظري", q: "كيف تنشئ قاموس فارغ؟", options: ["[]", "{}", "()", "dict[]"], correct: 1 },
+  { section: "12. Dictionary", type: "نظري", q: "الفرق بين List و Dictionary؟", options: ["List بالرقم، Dict بالاسم", "Dict بالرقم، List بالاسم", "لا فرق", "كلاهما بالرقم"], correct: 0 },
+  { section: "12. Dictionary", type: "عملي", q: "ما ناتج: len({'a':1, 'b':2})؟", options: ["1", "2", "3", "4"], correct: 1 },
+  { section: "12. Dictionary", type: "نظري", q: "ماذا تفعل dict.keys()؟", options: ["ترجع القيم", "ترجع المفاتيح", "ترجع الأزواج", "ترجع الطول"], correct: 1 },
+  { section: "12. Dictionary", type: "نظري", q: "كيف تضيف عنصر للقاموس؟", options: ["dict.append(k,v)", "dict[k] = v", "dict.add(k,v)", "dict.insert(k,v)"], correct: 1 },
+  { section: "12. Dictionary", type: "نظري", q: "كيف تحذف عنصر من القاموس؟", options: ["dict.remove(k)", "del dict[k]", "dict.delete(k)", "dict.pop(k)"], correct: 1 },
+
+  // ============ Lecture 13: Functions (6) ============
+  { section: "13. Functions", type: "نظري", q: "كيف تعرف دالة في Python؟", options: ["function name():", "def name():", "define name():", "func name():"], correct: 1 },
+  { section: "13. Functions", type: "نظري", q: "ماذا تفعل return؟", options: ["تطبع", "ترجع قيمة", "توقف الدالة", "تحذف"], correct: 1 },
+  { section: "13. Functions", type: "عملي", q: "ما ناتج: def f(x): return x*2; print(f(5))", options: ["5", "10", "25", "Error"], correct: 1 },
+  { section: "13. Functions", type: "نظري", q: "ما الفرق بين print و return؟", options: ["print يعرض، return يرجع", "return يعرض، print يرجع", "لا فرق", "كلاهما يعرض"], correct: 0 },
+  { section: "13. Functions", type: "عملي", q: "ما ناتج: def add(a,b): return a+b; print(add(3,4))", options: ["34", "7", "Error", "None"], correct: 1 },
+  { section: "13. Functions", type: "نظري", q: "هل يمكن للدالة أن تستدعي نفسها؟", options: ["نعم (Recursion)", "لا", "أحيانًا", "فقط مع if"], correct: 0 },
+
+  // ============ Lecture 14: Random (6) ============
+  { section: "14. Random", type: "نظري", q: "كيف نستورد مكتبة random؟", options: ["include random", "import random", "using random", "require random"], correct: 1 },
+  { section: "14. Random", type: "عملي", q: "ما ناتج random.randint(1, 6)؟", options: ["عشري بين 1 و 6", "صحيح عشوائي بين 1 و 6", "دائمًا 3", "خطأ"], correct: 1 },
+  { section: "14. Random", type: "عملي", q: "ما ناتج random.random()؟", options: ["صحيح بين 0 و 1", "عشري بين 0.0 و 1.0", "بين 1 و 100", "قائمة"], correct: 1 },
+  { section: "14. Random", type: "نظري", q: "كيف نختار عنصر عشوائي من قائمة؟", options: ["random.get(list)", "random.choice(list)", "random.pick(list)", "random.select(list)"], correct: 1 },
+  { section: "14. Random", type: "نظري", q: "ماذا تفعل shuffle()؟", options: ["تحذف", "تخلط العناصر", "ترتب", "تنسخ"], correct: 1 },
+  { section: "14. Random", type: "عملي", q: "هل randint(1,10) يمكن أن يُرجع 10؟", options: ["نعم، شامل الطرفين", "لا، حتى 9", "أحيانًا", "خطأ"], correct: 0 },
+
+  // ============ Lecture 15: String Methods (6) ============
+  { section: "15. Strings", type: "عملي", q: "ما ناتج: 'hello'.upper()؟", options: ["hello", "HELLO", "Hello", "Error"], correct: 1 },
+  { section: "15. Strings", type: "عملي", q: "ما ناتج: 'HELLO'.lower()؟", options: ["HELLO", "hello", "Hello", "Error"], correct: 1 },
+  { section: "15. Strings", type: "عملي", q: "ما ناتج: 'hello world'.replace('world', 'Python')؟", options: ["hello Python", "hello world", "Python", "Error"], correct: 0 },
+  { section: "15. Strings", type: "عملي", q: "ما ناتج: 'a,b,c'.split(',')؟", options: ["['a','b','c']", "'abc'", "Error", "('a','b','c')"], correct: 0 },
+  { section: "15. Strings", type: "عملي", q: "ما ناتج: 'Python'[0:3]؟", options: ["'Pyt'", "'Pyth'", "'yth'", "'Python'"], correct: 0 },
+  { section: "15. Strings", type: "عملي", q: "ما ناتج: 'hello'.count('l')؟", options: ["1", "2", "3", "0"], correct: 1 },
+
+  // ============ Lecture 16: Files (6) ============
+  { section: "16. Files", type: "نظري", q: "ما الدالة لفتح ملف؟", options: ["file()", "open()", "read()", "load()"], correct: 1 },
+  { section: "16. Files", type: "نظري", q: "ما وضع القراءة؟", options: ["'w'", "'r'", "'a'", "'x'"], correct: 1 },
+  { section: "16. Files", type: "نظري", q: "الفرق بين 'w' و 'a'؟", options: ["'w' يمسح، 'a' يضيف", "لا فرق", "'a' أسرع", "'w' للقراءة"], correct: 0 },
+  { section: "16. Files", type: "نظري", q: "ما الدالة لقراءة كل المحتوى؟", options: ["file.readall()", "file.read()", "file.get()", "file.open()"], correct: 1 },
+  { section: "16. Files", type: "نظري", q: "ميزة استخدام with؟", options: ["أسرع", "يغلق تلقائيًا", "يقرأ الكبيرة فقط", "يكتب أسرع"], correct: 1 },
+  { section: "16. Files", type: "نظري", q: "ما الدالة للكتابة؟", options: ["file.print()", "file.write()", "file.add()", "file.save()"], correct: 1 },
+
+  // ============ Lecture 17: OOP (6) ============
+  { section: "17. OOP", type: "نظري", q: "ما الكلمة لتعريف Class؟", options: ["object", "class", "def", "struct"], correct: 1 },
+  { section: "17. OOP", type: "نظري", q: "الفرق بين Class و Object؟", options: ["Class قالب، Object نسخة", "لا فرق", "Object قالب، Class نسخة", "Class للبيانات فقط"], correct: 0 },
+  { section: "17. OOP", type: "نظري", q: "ما وظيفة __init__؟", options: ["حذف الكائن", "تهيئة الكائن", "طباعة", "نسخ"], correct: 1 },
+  { section: "17. OOP", type: "نظري", q: "ما معنى self؟", options: ["اسم الكائن", "إشارة للكائن الحالي", "نوع البيانات", "دالة خاصة"], correct: 1 },
+  { section: "17. OOP", type: "عملي", q: "ما ناتج: class Dog: def __init__(s,n): s.name=n; d=Dog('Rex'); print(d.name)", options: ["Dog", "Rex", "Error", "None"], correct: 1 },
+  { section: "17. OOP", type: "نظري", q: "ما الفائدة من OOP؟", options: ["إبطاء الكود", "تنظيم وإعادة استخدام", "حذف المتغيرات", "الطباعة فقط"], correct: 1 },
+
+  // ============ Lecture 18: Turtle (6) ============
+  { section: "18. Turtle", type: "نظري", q: "كيف نستورد Turtle؟", options: ["include turtle", "import turtle", "using turtle", "require turtle"], correct: 1 },
+  { section: "18. Turtle", type: "عملي", q: "ما الأمر للتحرك للأمام 100؟", options: ["t.move(100)", "t.forward(100)", "t.go(100)", "t.walk(100)"], correct: 1 },
+  { section: "18. Turtle", type: "عملي", q: "ما زاوية رسم المربع؟", options: ["45°", "90°", "120°", "180°"], correct: 1 },
+  { section: "18. Turtle", type: "نظري", q: "ما الأمر لتغيير اللون؟", options: ["t.paint('red')", "t.color('red')", "t.set_color('red')", "t.pen_color('red')"], correct: 1 },
+  { section: "18. Turtle", type: "نظري", q: "ما الأمر لرفع القلم؟", options: ["t.penup()", "t.lift()", "t.stop()", "t.raise_pen()"], correct: 0 },
+  { section: "18. Turtle", type: "عملي", q: "ما الأمر لرسم دائرة نصف قطرها 50؟", options: ["t.draw_circle(50)", "t.circle(50)", "t.oval(50)", "t.round(50)"], correct: 1 },
+
+  // ============ Lecture 19: Exception Handling (6) ============
+  { section: "19. Exceptions", type: "نظري", q: "ما وظيفة try/except؟", options: ["تسريع", "معالجة الأخطاء", "طباعة", "حذف"], correct: 1 },
+  { section: "19. Exceptions", type: "نظري", q: "ما نوع خطأ القسمة على صفر؟", options: ["ValueError", "ZeroDivisionError", "TypeError", "IndexError"], correct: 1 },
+  { section: "19. Exceptions", type: "عملي", q: "ما نوع خطأ int('abc')؟", options: ["ValueError", "ZeroDivisionError", "TypeError", "KeyError"], correct: 0 },
+  { section: "19. Exceptions", type: "نظري", q: "متى ينفذ else في try؟", options: ["عند خطأ", "عند نجاح try", "دائمًا", "أبدًا"], correct: 1 },
+  { section: "19. Exceptions", type: "نظري", q: "متى ينفذ finally؟", options: ["عند خطأ فقط", "عند نجاح فقط", "دائمًا", "أبدًا"], correct: 2 },
+  { section: "19. Exceptions", type: "نظري", q: "لماذا نستخدم while مع try/except؟", options: ["تسريع", "إعادة السؤال عند الخطأ", "طباعة", "حذف"], correct: 1 },
+
+  // ============ Lecture 20: Review / Mixed (6) ============
+  { section: "20. Review", type: "عملي", q: "ما ناتج: print(type([]))؟", options: ["<class 'list'>", "<class 'dict'>", "<class 'tuple'>", "<class 'set'>"], correct: 0 },
+  { section: "20. Review", type: "عملي", q: "ما ناتج: sum([1,2,3,4])؟", options: ["4", "10", "24", "Error"], correct: 1 },
+  { section: "20. Review", type: "عملي", q: "ما ناتج: 'Python'[::-1]؟", options: ["'Python'", "'nohtyP'", "'Pyth'", "Error"], correct: 1 },
+  { section: "20. Review", type: "عملي", q: "ما ناتج: [1,2,3].append(4) ثم print([1,2,3])؟", options: ["[1,2,3]", "[1,2,3,4]", "[4,1,2,3]", "Error"], correct: 1 },
+  { section: "20. Review", type: "عملي", q: "ما ناتج: bool(0)؟", options: ["True", "False", "0", "Error"], correct: 1 },
+  { section: "20. Review", type: "عملي", q: "ما ناتج: len('Hello')؟", options: ["4", "5", "6", "Hello"], correct: 1 }
+];
+
+let answers = new Array(questions.length).fill(null);
+let timer;
+let timeLeft = 60 * 60; // 60 minutes
+let examStartTime;
+let examSubmitted = false; // حماية من إعادة التسليم
+
+let studentData = { name: '', age: '', grade: '', date: '' };
+
+function startExam() {
+  const name = document.getElementById('studentName').value.trim();
+  const age = document.getElementById('studentAge').value.trim();
+  const date = document.getElementById('examDate').value;
+  const grade = document.getElementById('studentGrade').value.trim();
+  
+  if (!name || !age || !date || !grade) {
+    alert('⚠️ الرجاء إدخال جميع البيانات المطلوبة');
+    return;
+  }
+  
+  studentData = { name, age, grade, date };
+  
+  document.getElementById('displayName').textContent = name;
+  document.getElementById('displayAge').textContent = age + ' سنة';
+  document.getElementById('displayDate').textContent = date;
+  
+  examStartTime = Date.now();
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('examPage').style.display = 'block';
+  
+  renderQuestions();
+  startTimer();
+  window.scrollTo(0, 0);
+}
+
+function startTimer() {
+  timer = setInterval(() => {
+    timeLeft--;
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('timer').textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
+    if (timeLeft <= 0) {
+      alert('⏰ انتهى الوقت! سيتم تسليم الورقة تلقائيًا');
+      submitExam(true);
+    }
+  }, 1000);
+}
+
+function renderQuestions() {
+  const container = document.getElementById('questionsContainer');
+  let currentSection = '';
+  let html = '';
+  
+  questions.forEach((q, idx) => {
+    if (q.section !== currentSection) {
+      currentSection = q.section;
+      const count = questions.filter(x => x.section === currentSection).length;
+      const firstIdx = questions.findIndex(x => x.section === currentSection) + 1;
+      html += `
+        <div class="section-header">
+          📘 ${currentSection} — أسئلة ${firstIdx}–${firstIdx + count - 1} | ${count} أسئلة
+        </div>
+      `;
+    }
+    
+    let optionsHTML = '';
+    q.options.forEach((opt, optIdx) => {
+      optionsHTML += `
+        <div class="option" onclick="selectOption(${idx}, ${optIdx})">
+          <input type="radio" name="q${idx}" id="q${idx}_opt${optIdx}" value="${optIdx}">
+          <label for="q${idx}_opt${optIdx}">${String.fromCharCode(65 + optIdx)}) ${opt}</label>
+        </div>
+      `;
+    });
+    
+    html += `
+      <div class="question-box" id="qbox${idx}">
+        <div class="question-header">
+          <div class="question-number">س${idx + 1}</div>
+          <div class="question-type">${q.type}</div>
+        </div>
+        <div class="question-text">${q.q}</div>
+        <div class="options">${optionsHTML}</div>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html;
+}
+
+function selectOption(qIdx, optIdx) {
+  if (examSubmitted) return; // حماية من التغيير بعد التسليم
+  answers[qIdx] = optIdx;
+  document.getElementById(`q${qIdx}_opt${optIdx}`).checked = true;
+  
+  const box = document.getElementById(`qbox${qIdx}`);
+  box.querySelectorAll('.option').forEach(o => o.style.borderColor = '#e2e8f0');
+  box.querySelectorAll('.option')[optIdx].style.borderColor = '#6366f1';
+  
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = answers.filter(a => a !== null).length;
+  document.getElementById('currentQ').textContent = answered;
+}
+
+function submitExam(autoSubmit = false) {
+  if (examSubmitted) {
+    alert('⚠️ تم تسليم الامتحان بالفعل! لا يمكن التسليم مرة أخرى.');
+    return;
+  }
+  
+  const unanswered = answers.filter(a => a === null).length;
+  
+  if (!autoSubmit && unanswered > 0) {
+    const confirmMsg = `⚠️ تنبيه مهم!\n\nلديك ${unanswered} سؤال بدون إجابة!\n\nهل تريد التسليم على أي حال؟\n\n(إذا نسيت ورجعت بعد التسليم، ستظهر لك الورقة مطبوعة كما سلّمتها)`;
+    if (!confirm(confirmMsg)) {
+      return;
+    }
+  }
+  
+  examSubmitted = true; // منع إعادة التسليم
+  clearInterval(timer);
+  
+  let correct = 0;
+  let wrong = 0;
+  let unansweredCount = 0;
+  let sectionStats = {};
+  
+  questions.forEach((q, idx) => {
+    const userAnswer = answers[idx];
+    
+    if (!sectionStats[q.section]) {
+      sectionStats[q.section] = { correct: 0, total: 0 };
+    }
+    sectionStats[q.section].total++;
+    
+    if (userAnswer === null) {
+      unansweredCount++;
+    } else if (userAnswer === q.correct) {
+      correct++;
+      sectionStats[q.section].correct++;
+    } else {
+      wrong++;
+    }
+  });
+  
+  const percentage = Math.round((correct / questions.length) * 100);
+  const timeSpent = Math.floor((Date.now() - examStartTime) / 1000);
+  const minutes = Math.floor(timeSpent / 60);
+  const seconds = timeSpent % 60;
+  
+  // عرض بيانات الطالب
+  document.getElementById('resName').textContent = studentData.name;
+  document.getElementById('resAge').textContent = studentData.age + ' سنة';
+  document.getElementById('resGrade').textContent = studentData.grade;
+  document.getElementById('resDate').textContent = studentData.date;
+  
+  document.getElementById('finalScore').textContent = correct;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong + unansweredCount;
+  document.getElementById('percentage').textContent = percentage + '%';
+  document.getElementById('timeSpent').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  
+  // الأداء حسب القسم
+  let performanceHTML = '<h3>📊 الأداء حسب القسم (المحاضرة)</h3>';
+  for (const [section, stats] of Object.entries(sectionStats)) {
+    const sectionPercentage = Math.round((stats.correct / stats.total) * 100);
+    performanceHTML += `
+      <div class="performance-bar">
+        <div class="performance-header">
+          <span>${section}</span>
+          <span>${stats.correct}/${stats.total} (${sectionPercentage}%)</span>
+        </div>
+        <div class="performance-track">
+          <div class="performance-fill" style="width: ${sectionPercentage}%"></div>
+        </div>
+      </div>
+    `;
+  }
+  document.getElementById('sectionPerformance').innerHTML = performanceHTML;
+  
+  // مراجعة الإجابات
+  let reviewHTML = '<h3>📋 مراجعة الإجابات والتصحيح:</h3>';
+  questions.forEach((q, idx) => {
+    const userAnswer = answers[idx];
+    const isCorrect = userAnswer === q.correct;
+    const isUnanswered = userAnswer === null;
+    
+    let statusClass, statusIcon, userAnswerText;
+    
+    if (isUnanswered) {
+      statusClass = 'unanswered';
+      statusIcon = '⚠️';
+      userAnswerText = 'لم تُجب';
+    } else if (isCorrect) {
+      statusClass = 'correct-answer';
+      statusIcon = '✅';
+      userAnswerText = String.fromCharCode(65 + userAnswer) + ') ' + q.options[userAnswer];
+    } else {
+      statusClass = 'wrong-answer';
+      statusIcon = '❌';
+      userAnswerText = String.fromCharCode(65 + userAnswer) + ') ' + q.options[userAnswer];
+    }
+    
+    reviewHTML += `
+      <div class="review-item ${statusClass}">
+        <strong>س${idx + 1} (${q.section}):</strong> ${q.q}<br>
+        <span style="color: ${isCorrect ? 'green' : isUnanswered ? 'gray' : 'red'}; font-weight: bold;">
+          ${statusIcon} إجابتك: ${userAnswerText}
+        </span><br>
+        ${!isCorrect ? `<span style="color: green; font-weight: bold;">✓ الإجابة الصحيحة: ${String.fromCharCode(65 + q.correct)}) ${q.options[q.correct]}</span>` : ''}
+      </div>
+    `;
+  });
+  document.getElementById('reviewSection').innerHTML = reviewHTML;
+  
+  document.getElementById('examPage').style.display = 'none';
+  document.getElementById('resultsPage').style.display = 'block';
+  window.scrollTo(0, 0);
+  
+  // تنبيه نهائي
+  setTimeout(() => {
+    alert(`✅ تم تسليم الامتحان بنجاح!\n\nالنتيجة: ${correct}/120 (${percentage}%)\n\n💡 يمكنك الآن طباعة الورقة كـ PDF من زر الطباعة.\n\n⚠️ ملاحظة: إذا حاولت إعادة الامتحان، ستفقد نتيجتك الحالية.`);
+  }, 500);
+}
+
+// التاريخ الافتراضي = اليوم
+document.getElementById('examDate').valueAsDate = new Date();
+
+// حماية من الإغلاق العرضي
+window.addEventListener('beforeunload', function(e) {
+  if (!examSubmitted && answers.some(a => a !== null)) {
+    e.preventDefault();
+    e.returnValue = '⚠️ لديك امتحان غير مُسلّم! هل تريد المغادرة؟';
+  }
+});
+</script>
+
+</body>
+</html>
